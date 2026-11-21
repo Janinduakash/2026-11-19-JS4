@@ -58,27 +58,75 @@ console.log("Hello, World!");
 //=========================================================================
 //----------------CRUD operation in localStorage--------------------------
 
-function btnAddCustomrOnAction(){
-   alert("add customer"); 
+let customerList = JSON.parse(localStorage.getItem("customerList")) || [];
+
+function btnAddCustomrOnAction() {
+   //alert("add customer"); 
+
+   let customer = {
+      id: document.getElementById("txtid").value,
+      name: document.getElementById("txtname").value,
+      age: document.getElementById("txtage").value,
+      address: document.getElementById("txtaddress").value,
+   }
+
+   //console.log.(customer);
+   customerList.push(customer);
+   //console.log(customerList);
+   localStorage.setItem("customerList", JSON.stringify(customerList));
+   btnLoadTableOnAction();
+
+
 }
 
-function btnSearchCustomrOnAction(){
-   alert("search customer"); 
+function btnSearchCustomrOnAction() {
+   //alert("search customer");
+
+   let id = document.getElementById("txtid").value
+
+   let customer = customerList.find(customer => customer.id === id);
+   if (customer) {
+      document.getElementById("txtname").value = customer.name;
+      document.getElementById("txtage").value = customer.age;
+      document.getElementById("txtaddress").value = customer.address;
+
+   } else {
+      alert("Customer not found");
+   }
+
+
+
 }
 
-function btnDeleteCustomrOnAction(){
-   alert("delete customer"); 
+function btnDeleteCustomrOnAction() {
+   alert("delete customer");
+
 }
 
-function btnUpdateCustomrOnAction(){
-   alert("update customer"); 
+function btnUpdateCustomrOnAction() {
+   alert("update customer");
 }
 
-function btnClearCustomrOnAction(){
-   alert("clear customer"); 
+function btnClearCustomrOnAction() {
+   alert("clear customer");
 }
 
-function btnLoadTableOnAction(){
-   alert("load table"); 
+function btnLoadTableOnAction() {
+   // alert("load table");
+
+   let tblbdy = "";
+   customerList.forEach(customer => {
+      tblbdy += `
+         <tr>
+            <td>${customer.id}</td>
+            <td>${customer.name}</td>
+            <td>${customer.age}</td>
+            <td>${customer.address}</td>
+         </tr>
+      `;
+   });
+   document.getElementById("tblCustomer").innerHTML = tblbdy;
 }
+
+btnLoadTableOnAction();
 
