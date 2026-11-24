@@ -58,98 +58,103 @@ console.log("Hello, World!");
 //=========================================================================
 //----------------CRUD operation in localStorage--------------------------
 
-let customerList = JSON.parse(localStorage.getItem("customerList")) || [];
+// let customerList = JSON.parse(localStorage.getItem("customerList")) || [];
 
-function btnAddCustomrOnAction() {
-   //alert("add customer"); 
+// function btnAddCustomrOnAction() {
+//    //alert("add customer");
 
-   let customer = {
-      id: document.getElementById("txtid").value,
-      name: document.getElementById("txtname").value,
-      age: document.getElementById("txtage").value,
-      address: document.getElementById("txtaddress").value,
-   }
+//    let customer = {
+//       id: document.getElementById("txtid").value,
+//       name: document.getElementById("txtname").value,
+//       age: document.getElementById("txtage").value,
+//       address: document.getElementById("txtaddress").value,
+//    }
 
-   //console.log.(customer);
-   customerList.push(customer);
-   //console.log(customerList);
-   localStorage.setItem("customerList", JSON.stringify(customerList));
-   btnLoadTableOnAction();
-
-
-}
-
-function btnSearchCustomrOnAction() {
-   //alert("search customer");
-
-   let id = document.getElementById("txtid").value
-
-   let customer = customerList.find(customer => customer.id === id);
-   if (customer) {
-      document.getElementById("txtname").value = customer.name;
-      document.getElementById("txtage").value = customer.age;
-      document.getElementById("txtaddress").value = customer.address;
-
-   } else {
-      alert("Customer not found");
-   }
+//    //console.log.(customer);
+//    customerList.push(customer);
+//    //console.log(customerList);
+//    localStorage.setItem("customerList", JSON.stringify(customerList));
+//    btnLoadTableOnAction();
 
 
+// }
 
-}
+// function btnSearchCustomrOnAction() {
+//    //alert("search customer");
 
-function btnDeleteCustomrOnAction() {
-   //alert("delete customer");
-   let id = document.getElementById("txtid").value
-   let index = customerList.findIndex(c => c.id === id);
-   if (index !== -1) {
-      customerList.splice(index, 1);
-      localStorage.setItem("customerList", JSON.stringify(customerList));
-      btnLoadTableOnAction();
-   } else {
-      alert("Customer not found");
-   }
-}
+//    let id = document.getElementById("txtid").value
 
-function btnUpdateCustomrOnAction() {
-   //alert("update customer");
-   let id = document.getElementById("txtid").value
-   let customer = customerList.find(c => c.id === id);
+//    let customer = customerList.find(customer => customer.id === id);
+//    if (customer) {
+//       document.getElementById("txtname").value = customer.name;
+//       document.getElementById("txtage").value = customer.age;
+//       document.getElementById("txtaddress").value = customer.address;
 
-   if (customer) {
-      customer.name = document.getElementById("txtname").value;
-      customer.age = document.getElementById("txtage").value;
-      customer.address = document.getElementById("txtaddress").value;
-
-      localStorage.setItem("customerList", JSON.stringify(customerList));
-      btnLoadTableOnAction();
-   } else {
-      alert("Customer not found");
-   }
+//    } else {
+//       alert("Customer not found");
+//    }
 
 
-}
 
-function btnClearCustomrOnAction() {
-   alert("clear customer");
-}
+// }
 
-function btnLoadTableOnAction() {
-   // alert("load table");
+// function btnDeleteCustomrOnAction() {
+//    //alert("delete customer");
+//    let id = document.getElementById("txtid").value
+//    let index = customerList.findIndex(c => c.id === id);
+//    if (index !== -1) {
+//       customerList.splice(index, 1);
+//       localStorage.setItem("customerList", JSON.stringify(customerList));
+//       btnLoadTableOnAction();
+//    } else {
+//       alert("Customer not found");
+//    }
+// }
 
-   let tblbdy = "";
-   customerList.forEach(customer => {
-      tblbdy += `
-         <tr>
-            <td>${customer.id}</td>
-            <td>${customer.name}</td>
-            <td>${customer.age}</td>
-            <td>${customer.address}</td>
-         </tr>
-      `;
-   });
-   document.getElementById("tblCustomer").innerHTML = tblbdy;
-}
+// function btnUpdateCustomrOnAction() {
+//    //alert("update customer");
+//    let id = document.getElementById("txtid").value
+//    let customer = customerList.find(c => c.id === id);
 
-btnLoadTableOnAction();
+//    if (customer) {
+//       customer.name = document.getElementById("txtname").value;
+//       customer.age = document.getElementById("txtage").value;
+//       customer.address = document.getElementById("txtaddress").value;
+
+//       localStorage.setItem("customerList", JSON.stringify(customerList));
+//       btnLoadTableOnAction();
+//    } else {
+//       alert("Customer not found");
+//    }
+
+
+// }
+
+// function btnClearCustomrOnAction() {
+//    alert("clear customer");
+// }
+
+// function btnLoadTableOnAction() {
+//    // alert("load table");
+
+//    let tblbdy = "";
+//    customerList.forEach(customer => {
+//       tblbdy += `
+//          <tr>
+//             <td>${customer.id}</td>
+//             <td>${customer.name}</td>
+//             <td>${customer.age}</td>
+//             <td>${customer.address}</td>
+//          </tr>
+//       `;
+//    });
+//    document.getElementById("tblCustomer").innerHTML = tblbdy;
+// }
+
+// btnLoadTableOnAction();
+
+
+
+
+
 
