@@ -155,6 +155,10 @@ console.log("Hello, World!");
 
 
 
+//-------------------Weather API-----------------
 
+fetch("http://api.weatherapi.com/v1/current.json?key=6c240a00690346fa8d4153923262111&q=Agalawatta").then(res => res.json()).then(data => {
+   console.log(data);
+})
 
 
