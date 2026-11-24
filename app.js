@@ -1,4 +1,4 @@
-console.log("Hello, World!");
+// console.log("Hello, World!");
 
 //add data to localStorage
 
@@ -157,8 +157,21 @@ console.log("Hello, World!");
 
 //-------------------Weather API-----------------
 
-fetch("http://api.weatherapi.com/v1/current.json?key=6c240a00690346fa8d4153923262111&q=Agalawatta").then(res => res.json()).then(data => {
+const apiKey = "6c240a00690346fa8d4153923262111";
+const baseUrl = "http://api.weatherapi.com/v1";
+
+fetch(`${baseUrl}/current.json?key=${apiKey}&q=Agalawatta`).then(res => res.json()).then(data => {
    console.log(data);
+
+   document.getElementById("weatherInfo").innerHTML = `
+   <div id="weatherInfo">
+      <h1>${data.current.condition.text}</h1>
+      <img src="${data.current.condition.icon}" alt="">
+      <p>${data.current.temp_c}°C</p>
+      <p>${data.current.humidity}%</p>
+    </div>
+
+   `
 })
 
 
